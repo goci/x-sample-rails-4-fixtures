@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe Post do
   let(:fixture) { File.open(File.dirname(__FILE__) + "/../fixtures/post.txt") }
-  let(:post) { Post.new(title: 'post', body: File.read(fixture)) }
+  let(:fixture_unicode) { File.open(File.dirname(__FILE__) + "/../fixtures/À♛.txt") }
   subject { post }
 
-  context "fixture loading" do
-    it "should work" do
-      p fixture
-    end
+  context "with unicode" do
+    let(:post) { Post.new(title: 'post', body: File.read(fixture_unicode)) }
+    its(:body) { should eq('♜Ƈ') }
   end
 
-  its(:body) { should eq('Hey, How are you?') }
+  context "with ascii" do
+    let(:post) { Post.new(title: 'post', body: File.read(fixture)) }
+    its(:body) { should eq('Hey, How are you?') }
+  end
 end
