@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe Post do
   let(:fixture) { File.open(File.dirname(__FILE__) + "/../fixtures/post.txt") }
   let(:fixture_unicode) { File.open(File.dirname(__FILE__) + "/../fixtures/À♛.txt") }
-  let(:fixture_unicode_2) { File.open(File.dirname(__FILE__) + "/../fixtures/banièrebetalogo3 ][ (1).txt") }
+  let(:fixture_unicode_2) { File.open(File.dirname(__FILE__) + "/../fixtures/banie\xCC\x80rebetalogo3 ][ (1).txt") }
   subject { post }
 
   context "with unicode" do
