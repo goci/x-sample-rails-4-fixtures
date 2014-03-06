@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 ddl_dir=$(dirname $0)/../ddl
 
